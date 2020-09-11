@@ -1,0 +1,34 @@
+[
+    {
+        "Torneo": "Primera División",
+        "Fechas": [
+            {
+                "Fecha": 9,
+                "Resultados": [
+
+                ]
+            },
+            {
+                "Fecha": 10,
+                "Resultados": [
+                    {
+                        "Nro": 1,
+                        "Local": 2.15,
+                        "Empate": 3,
+                        "Visita": 2.85,
+                        "Resultado": "E"
+                    }
+                ]
+            }
+            
+        ]
+    },
+
+
+    {
+        "Torneo": "Segunda División",
+        "Fechas": [
+
+        ]
+    }
+]
