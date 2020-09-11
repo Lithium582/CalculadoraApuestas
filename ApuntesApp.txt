@@ -1,0 +1,33 @@
+1) Crear la aplicación:
+"create-react-app calculadora-apuestas" --> Esto demora un montón
+
+2) En la carpeta "calculadora-apuestas"
+"npm run"
+
+3) Instalar Bulma --> "save y save-exact" permiten que si se va a descargar más adelante, se descargue exactamente la versión que se instaló al principio
+"npm install bulma --save --save-exact"
+
+Importante:
+-----------------
+Cada componente debe importar la librería de react
+"import React from 'react'"
+
+Siempre que se use el "Constructor", se debe llamar a "super(props);" y NUNCA se debe llamar al setState
+
+Datos sobre el ciclo de vida de los componentes:
+---------------------------------------------------
+https://reactjs.org/docs/react-component.html
+https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+"componentDidMount" --> Evento ideal para hacer una llamada a algún endpoint (llamada a la API de las películas en el buscador, por ejemplo)
+
+
+
+//Genéricos app
+- Agregar ocnstructor a "filtros"
+    Debe recibir las distintas colecciones para los combos
+    Si no recibe una colección (o es vacía) no muestra el combo o lo muestra deshabilitado
+    Recibe las funciones callback que ejecuta cada combo
+
+- Constructor a combos
+    Recibe la función callback a ejecutar
