@@ -9,10 +9,16 @@
 
 Importante:
 -----------------
-Cada componente debe importar la librería de react
-"import React from 'react'"
+- Cada componente debe importar la librería de react
+    "import React from 'react'"
 
-Siempre que se use el "Constructor", se debe llamar a "super(props);" y NUNCA se debe llamar al setState
+- Siempre que se use el "Constructor", se debe llamar a "super(props);" y NUNCA se debe llamar al setState
+- CUANDO SE BAJA DE GIT:
+    NPM install
+    NPM run
+
+- AL INSTALAR UN PAQUETE
+    --save --save-exact --> Permite guardar la versión exacta que se quiere usar
 
 Datos sobre el ciclo de vida de los componentes:
 ---------------------------------------------------
@@ -31,3 +37,4 @@ https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
 - Constructor a combos
     Recibe la función callback a ejecutar
+

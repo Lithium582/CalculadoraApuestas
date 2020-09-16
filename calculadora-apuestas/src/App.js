@@ -10,18 +10,40 @@ class App extends Component {
 
   //Esta función recibe la información del archivo cargado, carga las listas y setea el state, generando una nueva renderización del componente
   _handleArchivo = (datosArchivo) => {
-    let campeonatos = []
+    let campeonatos = [];
+
     datosArchivo.forEach(e => {
-      campeonatos.push(e.Torneo);
+      campeonatos.push({
+        id: e.Torneo,
+        texto: e.Torneo 
+      });
     });
 
-    this.setState({datos: datosArchivo, archivoSubido: true, campeonatos: campeonatos});
+    this.setState({
+      archivoSubido: true,
+      datos: datosArchivo,
+      campeonatos: campeonatos,
+      fechas: [],
+      resultados: []
+    });
+  }
+
+  //Controla el evento change del combo de Campeonatos
+  _changeCampeonato = (e) => {
+    return [{
+      id: "HOLA",
+      texto: "FECHA 1"
+    }];
   }
 
   _renderFiltros = () => {
+    console.log("SOY ELAP");
     return <div className="divFiltros">
             <Filtros
               campeonatos={this.state.campeonatos}
+              fechas={this.state.fechas}
+              resultados={this.state.resultados}
+              comboCampeonato={this._changeCampeonato}
             ></Filtros>
           </div>
   }

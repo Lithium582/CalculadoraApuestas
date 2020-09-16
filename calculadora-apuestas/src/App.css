@@ -7,3 +7,8 @@
   display: flex;
   justify-content: center;
 }
+
+select.selectCOMBO,
+input.inputFiltro {
+  width: 315px;
+}
