@@ -49,6 +49,7 @@ export class FileUploader extends Component {
     }
     
     render() {
+        console.log("RENDER FILE");
         const {id, formatos} = this.props;
         
         return (

@@ -37,7 +37,6 @@ class App extends Component {
   }
 
   _renderFiltros = () => {
-    console.log("SOY ELAP");
     return <div className="divFiltros">
             <Filtros
               campeonatos={this.state.campeonatos}
@@ -49,6 +48,7 @@ class App extends Component {
   }
 
   render() {
+    console.log("RENDER APP");
     return (
       <div className="App">
         <Titulo>Cálculo apuestas</Titulo>
@@ -61,9 +61,10 @@ class App extends Component {
           Cargar
         </button> */}
 
-        {this.state.archivoSubido
-        ? this._renderFiltros()
-        : ""
+        {
+          this.state.archivoSubido
+          ? this._renderFiltros()
+          : ""
         }
       </div>
     );

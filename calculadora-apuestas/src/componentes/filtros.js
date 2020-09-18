@@ -2,23 +2,29 @@ import React, { Component } from 'react';
 import Combo from './combo.js';
 
 export class Filtros extends Component {
+    //state = {campeonatos: [], resultados: [], fechas: []}
     constructor(props) {
         super(props);
         //Defino el state
         this.state = {
             campeonatos: props.campeonatos,
             fechas: props.fechas,
-            resultados: props.resultados
+            resultados: props.resultados,
+            comboCampeonato: props.comboCampeonato
         };
     }
 
     _changeCampeonato = (e) => {
-        let lista = this.props.comboCampeonato(e);
+        let lista = this.state.comboCampeonato(e);
         console.log("LISTA FILTRO", lista);
 
         this.setState({
             fechas: lista
         });
+    }
+
+    _changeFechas = (e) => {
+        console.log("HOLI");
     }
 
     render () {
@@ -35,7 +41,7 @@ export class Filtros extends Component {
                 <div>Fecha:</div>
                 <Combo
                     lista={this.state.fechas}
-                    onChange={this._comboCampeonato}
+                    onChange={this._changeFechas}
                 ></Combo>
 
                 <div>Resultado:</div>

@@ -5,23 +5,25 @@ export class Combo extends Component {
         super(props);
         
         this.state = {
-            onChange: props.onChange,
-            lista: props.lista
+            onChange: props.onChange
         };
     }
 
     _change = (e) => {
+        console.log("CHANGE");
         if(this.state.onChange){
             this.state.onChange(e);
         }
     }
 
     render() {
+        console.log("RENDER COMBO", this.props);
+
         let opciones = [{
             id: "",
             texto: "--SIN SELECCIONAR--"
         }];
-        opciones = opciones.concat(this.state.lista);
+        opciones = opciones.concat(this.props.lista);
 
         let algo = opciones.length == 1 ? "disabled" : "";
         
