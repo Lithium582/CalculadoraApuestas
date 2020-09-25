@@ -6,10 +6,39 @@ import { FileUploader } from './componentes/fileuploader';
 import { Filtros } from './componentes/filtros';
 
 class App extends Component {
-  state = {archivoSubido: false, datos: null, campeonatos: [], fechas: [], resultados: [], monto: 0, tipoApuesta: ""}
+  state = {
+    archivoSubido: false,
+    datos: null,
+    campeonatos: [],
+    monto: 0,
+    tipoApuesta: "",
+    resultados: [
+    {
+      id: 1,
+      texto: "Locatario"
+    },
+    {
+      id: 2,
+      texto: "Visitante"
+    },
+    {
+      id: 3,
+      texto: "Favorito"
+    },
+    {
+      id: 4,
+      texto: "No Favorito"
+    },
+    {
+      id: 5,
+      texto: "Empate"
+    },  
+  ]
+  }
 
   //Esta función recibe la información del archivo cargado, carga las listas y setea el state, generando una nueva renderización del componente
   _handleArchivo = (datosArchivo) => {
+    console.log("SOY EL JÁNDEL", datosArchivo);
     let campeonatos = [];
 
     datosArchivo.forEach(e => {
@@ -22,27 +51,50 @@ class App extends Component {
     this.setState({
       archivoSubido: true,
       datos: datosArchivo,
-      campeonatos: campeonatos,
-      fechas: [],
-      resultados: []
+      campeonatos: campeonatos
     });
   }
 
   //Controla el evento change del combo de Campeonatos
   _changeCampeonato = (e) => {
-    return [{
-      id: "HOLA",
-      texto: "FECHA 1"
-    }];
+    let idCamp = e.currentTarget.value;
+
+    let campeonatoSeleccionado = this.state.datos.filter((e) => {
+      return e.Torneo.toUpperCase() == idCamp.toUpperCase() || idCamp === "";
+    });
+
+    console.log("CAMPEONATO SELECCIONADO", campeonatoSeleccionado);
+
+    return campeonatoSeleccionado;
+  }
+
+  _changeFecha = (idCampeonato, idFecha) => {
+    // console.log("SOMOS DATOS", this.state.datos);
+    // console.log("SOY FECHA", idFecha);
+    // console.log("SOY CAmpoeonao", idCampeonato);
+
+    // let fechaSeleccionada = this.state.datos.filter((e) => {
+    //   return e.Torneo.toUpperCase() == idCampeonato.toUpperCase();
+    // });
+
+    // console.log("GJHASGTJDGFDSJTGFGUYEFEI", fechaSeleccionada);
+    
+    // // [0].Fechas.filter((e) => {
+    // //   return e.Fecha == idFecha || idFecha === "";
+    // // })[0];
+
+    // return fechaSeleccionada;
   }
 
   _renderFiltros = () => {
     return <div className="divFiltros">
             <Filtros
               campeonatos={this.state.campeonatos}
-              fechas={this.state.fechas}
+              // fechas={this.state.fechas}
               resultados={this.state.resultados}
               comboCampeonato={this._changeCampeonato}
+              comboFecha={this._changeFecha}
+              comboResultado={this._comboResultado}
             ></Filtros>
           </div>
   }

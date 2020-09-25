@@ -29,12 +29,8 @@ https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
 
 
-//Genéricos app
-- Agregar ocnstructor a "filtros"
-    Debe recibir las distintas colecciones para los combos
-    Si no recibe una colección (o es vacía) no muestra el combo o lo muestra deshabilitado
-    Recibe las funciones callback que ejecuta cada combo
+BUGS:
+    Se rompe al seleccionar el "sin seleccionar" del primer combo
 
-- Constructor a combos
-    Recibe la función callback a ejecutar
+- Validar que la entrada en "Monto" y "Apuesta" sea válida
 

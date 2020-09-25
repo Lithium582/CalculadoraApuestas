@@ -10,7 +10,6 @@ export class Combo extends Component {
     }
 
     _change = (e) => {
-        console.log("CHANGE");
         if(this.state.onChange){
             this.state.onChange(e);
         }

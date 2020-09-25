@@ -19,6 +19,72 @@
                         "Resultado": "E"
                     }
                 ]
+            },
+            {
+                "Fecha": 11,
+                "Resultados": [
+                    
+                ]
+            },
+            {
+                "Fecha": 12,
+                "Resultados": [
+                    {
+                        "Nro": 1,
+                        "Local": 1.95,
+                        "Empate": 2.90,
+                        "Visita": 3.45,
+                        "Resultado": "V"
+                    },
+                    {
+                        "Nro": 2,
+                        "Local": 1.65,
+                        "Empate": 3.10,
+                        "Visita": 4.50,
+                        "Resultado": "V"
+                    },
+                    {
+                        "Nro": 3,
+                        "Local": 1.55,
+                        "Empate": 3.20,
+                        "Visita": 5.20,
+                        "Resultado": "E"
+                    },
+                    {
+                        "Nro": 4,
+                        "Local": 1.95,
+                        "Empate": 2.95,
+                        "Visita": 3.35,
+                        "Resultado": "V"
+                    },{
+                        "Nro": 5,
+                        "Local": 3.90,
+                        "Empate": 2.95,
+                        "Visita": 1.80,
+                        "Resultado": "E"
+                    },
+                    {
+                        "Nro": 6,
+                        "Local": 1.70,
+                        "Empate": 2.95,
+                        "Visita": 4.50,
+                        "Resultado": "E"
+                    },
+                    {
+                        "Nro": 7,
+                        "Local": 1.85,
+                        "Empate": 2.95,
+                        "Visita": 3.70,
+                        "Resultado": "L"
+                    },
+                    {
+                        "Nro": 8,
+                        "Local": 1.45,
+                        "Empate": 3.45,
+                        "Visita": 5.90,
+                        "Resultado": "L"
+                    }
+                ]
             }
             
         ]
