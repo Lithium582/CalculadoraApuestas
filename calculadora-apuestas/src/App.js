@@ -32,7 +32,7 @@ class App extends Component {
     {
       id: 5,
       texto: "Empate"
-    },  
+    }
   ]
   }
 
@@ -59,13 +59,16 @@ class App extends Component {
   _changeCampeonato = (e) => {
     let idCamp = e.currentTarget.value;
 
-    let campeonatoSeleccionado = this.state.datos.filter((e) => {
-      return e.Torneo.toUpperCase() == idCamp.toUpperCase() || idCamp === "";
-    });
+    if (idCamp != "") {
+      let campeonatoSeleccionado = this.state.datos.filter((e) => {
+        return e.Torneo.toUpperCase() === idCamp.toUpperCase();
+      });
 
-    console.log("CAMPEONATO SELECCIONADO", campeonatoSeleccionado);
+      console.log("CAMPEONATO SELECCIONADO", campeonatoSeleccionado);
+      return campeonatoSeleccionado[0];
+    }
 
-    return campeonatoSeleccionado;
+    return null;
   }
 
   _changeFecha = (idCampeonato, idFecha) => {
