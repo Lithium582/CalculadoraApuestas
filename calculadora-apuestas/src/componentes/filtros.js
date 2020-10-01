@@ -131,20 +131,6 @@ export class Filtros extends Component {
 
         combinaciones = this._obtenerCombinaciones(partidosAcertados, combApuestas);
 
-        // for (let i = 0; i < partidosAcertados.length; i++) {
-        //     let partido1 = partidosAcertados[i];
-            
-        //     for (let j = (i+1); j < partidosAcertados.length; j++) {
-        //         let partido2 = partidosAcertados[j];
-        //         let objCombinacion = {
-        //             Partidos: partido1.Numero + " - " + partido2.Numero,
-        //             Dividendo: (partido1.Dividendo * partido2.Dividendo)
-        //         }
-
-        //         combinaciones.push(objCombinacion);
-        //     }
-        // }
-
         console.log("RESULTADO", resultado);
         console.log("RES FINAL", resultadoFinal);
         console.log("PARTIDOS", partidosAcertados);
@@ -206,26 +192,35 @@ export class Filtros extends Component {
     }
 
     _obtenerCombinacionesRecursivo(partidos, combinacionesParcial, cantCombinaciones, combinacionesLlevan) {
+        //Si ya tengo una combinación completa
         if (cantCombinaciones == 0) {
             let nuevaCombinacion = {
                 Partidos: "",
                 Dividendo: 1
             };
 
+            let primeraPosicion = combinacionesParcial[0];
+            let objPartido1 = partidos[primeraPosicion];
+            nuevaCombinacion.Partidos += objPartido1.Numero;
+            nuevaCombinacion.Dividendo = objPartido1.Dividendo;
+
             for (let i = 0; i < combinacionesParcial.length; i++) {
                 let posicionPartido = combinacionesParcial[i];
                 let objPartido = partidos[posicionPartido];
 
-                nuevaCombinacion.Partidos += objPartido.Numero + " - ";
+                nuevaCombinacion.Partidos += " - " + objPartido.Numero;
                 nuevaCombinacion.Dividendo = (nuevaCombinacion.Dividendo * objPartido.Dividendo);
             }
 
+            //Creo el objeto con el dividendo multiplicado, lo agrego al array y retorno todo
             combinacionesLlevan.push(nuevaCombinacion);
 
             return combinacionesLlevan;
         } else {
             let maximoParcial = 0;
 
+            //La primera vez, si el array es vacío, el método "max" retorna -Infinity
+            //Entonces, lo seteo en cero y si el array no es vacío, se calcula el máximo y se suma uno para continuar
             if (combinacionesParcial.length > 0) {
                 maximoParcial = Math.max(...combinacionesParcial);
                 maximoParcial++;
