@@ -116,13 +116,46 @@ export class Filtros extends Component {
     _obtenerPartidos = (fecha, idResultado, combApuestas) => {
         let partidosAcertados = [];
         let combinaciones = [];
+        let resultadosAcertados = [];
         let resultado = this._obtenerResultados(idResultado);
 
-        let resultadoFinal = fecha.Resultados.filter((e) => {
-            return e.Resultado === resultado.Inicial;
-        });
+        /*
+            Obtengo los resultados finales que coinciden con el resultado que estoy buscando
+            Ej: si busco empates, busco aquellos partidos que hayan finalizado en empate
+            La búsqueda por "Favorito" o "No favorito" es un tanto diferente a la búsqueda por "Locatario", "Visitante" o "Empate"
+        */
+        if (resultado.Inicial != "F" && resultado.Inicial != "N") {
+            resultadosAcertados = fecha.Resultados.filter((e) => {
+                return e.Resultado === resultado.Inicial;
+            });
+        } else {
+            /// ** FALTA TESTEAR ESTO **
+            resultadosAcertados = fecha.Resultados.filter((e) => {
+                if (e.Resultado == "E") {
+                    //Yo busco solo favoritos o no favoritos a ganar. Por lo tanto, el empate nunca me sirve
+                    return false;
+                }
 
-        partidosAcertados = resultadoFinal.map((e) => {
+                let retorno = false;
+
+                if (resultado.Inicial == "F") {
+                    retorno = (e.Visita < e.Local && e.Resultado == "V") || //La visita es favorita (paga menos) y gana
+                        (e.Local < e.Visita && e.Resultado == "L"); //O el local es favorito y gana
+                } else {
+                    //Busco al no favorito
+                    retorno = (e.Visita > e.Local && e.Resultado == "V") || //La visita es no favorita (paga más) y gana
+                    (e.Local > e.Visita && e.Resultado == "L"); //O el local es no favorito y gana
+                }
+
+                /*Ángel 2/10/20:
+                    Aquí se contempla qué pasaría en el caso de que ambos triunfos pagaran lo mismo. Es un caso muuuy poco probable, que no estoy seguro de que esté bien resuelto
+                    porque en caso de darse, yo elegiría al azar a cuál de los dos jugarle para la jugada de favoritos y la de no favoritos
+                */
+                return (retorno || e.Local === e.Visita);
+            });
+        }
+        
+        partidosAcertados = resultadosAcertados.map((e) => {
             return {
                 Numero: e.Nro,
                 Dividendo: e[resultado.Res]
@@ -132,7 +165,7 @@ export class Filtros extends Component {
         combinaciones = this._obtenerCombinaciones(partidosAcertados, combApuestas);
 
         console.log("RESULTADO", resultado);
-        console.log("RES FINAL", resultadoFinal);
+        console.log("RES ACERTADOS", resultadosAcertados);
         console.log("PARTIDOS", partidosAcertados);
         console.log("COMBINACIONES", combinaciones);
 
