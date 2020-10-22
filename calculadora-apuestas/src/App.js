@@ -38,7 +38,6 @@ class App extends Component {
 
   //Esta función recibe la información del archivo cargado, carga las listas y setea el state, generando una nueva renderización del componente
   _handleArchivo = (datosArchivo) => {
-    console.log("SOY EL JÁNDEL", datosArchivo);
     let campeonatos = [];
 
     datosArchivo.forEach(e => {
@@ -64,7 +63,6 @@ class App extends Component {
         return e.Torneo.toUpperCase() === idCamp.toUpperCase();
       });
 
-      console.log("CAMPEONATO SELECCIONADO", campeonatoSeleccionado);
       return campeonatoSeleccionado[0];
     }
 
@@ -103,7 +101,6 @@ class App extends Component {
   }
 
   render() {
-    console.log("RENDER APP");
     return (
       <div className="App">
         <Titulo>Cálculo apuestas</Titulo>

@@ -16,8 +16,6 @@ export class Combo extends Component {
     }
 
     render() {
-        console.log("RENDER COMBO", this.props);
-
         let opciones = [{
             id: "",
             texto: "--SIN SELECCIONAR--"

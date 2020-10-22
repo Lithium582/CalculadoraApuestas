@@ -153,6 +153,11 @@ export class Filtros extends Component {
                 */
                 return (retorno || e.Local === e.Visita);
             });
+
+            resultadosAcertados.forEach(e => {
+                e.Favorito = (e.Visita < e.Local) ? e.Visita : e.Local;
+                e.NoFavorito = (e.Visita > e.Local) ? e.Visita : e.Local;
+            });
         }
         
         partidosAcertados = resultadosAcertados.map((e) => {
@@ -163,11 +168,6 @@ export class Filtros extends Component {
         });
 
         combinaciones = this._obtenerCombinaciones(partidosAcertados, combApuestas);
-
-        console.log("RESULTADO", resultado);
-        console.log("RES ACERTADOS", resultadosAcertados);
-        console.log("PARTIDOS", partidosAcertados);
-        console.log("COMBINACIONES", combinaciones);
 
         return {
             Resultado: resultado.Res,
@@ -204,7 +204,7 @@ export class Filtros extends Component {
             }
             case "4": {
                 inicial = "N";
-                resultado = "No Favorito";
+                resultado = "NoFavorito";
                 break;
             }
             case "5": {
@@ -237,7 +237,7 @@ export class Filtros extends Component {
             nuevaCombinacion.Partidos += objPartido1.Numero;
             nuevaCombinacion.Dividendo = objPartido1.Dividendo;
 
-            for (let i = 0; i < combinacionesParcial.length; i++) {
+            for (let i = 1; i < combinacionesParcial.length; i++) {
                 let posicionPartido = combinacionesParcial[i];
                 let objPartido = partidos[posicionPartido];
 
@@ -259,8 +259,6 @@ export class Filtros extends Component {
                 maximoParcial++;
             }
 
-            console.log("EL MÁX", maximoParcial);
-
             for (let i = maximoParcial; i < partidos.length; i++) {
                 let combinacionesParcial2 = [...combinacionesParcial];
                 combinacionesParcial2.push(i);
@@ -277,21 +275,19 @@ export class Filtros extends Component {
     _clickCalcular = (e) => {
         let formValido = this._validarForm();
 
-        if (formValido == ""){
-            console.log("SOY EL ESTÉIT", this.state);
-
+        if (formValido == "") {
             let resultados = [];
             let fechaSeleccionada = this.state.fechaSeleccionada;
 
             resultados = this._obtenerPartidos(fechaSeleccionada, this.state.resultadoSeleccionado, this.state.combinacionApuesta);
 
+            console.log("RESULTADOS", resultados);
         } else {
             alert(formValido);
         }
     }
 
     render () {
-        console.log("EL ESTÉIT FILTROH", this.state);
         let deshabilitado = this.state.fechaSeleccionada == "" ? "disabled" : "";
 
         return (

@@ -30,7 +30,6 @@ https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
 
 BUGS:
-    Se rompe al seleccionar el "sin seleccionar" del primer combo
-
+- Se rompe al seleccionar el "sin seleccionar" del primer combo
 - Validar que la entrada en "Monto" y "Apuesta" sea válida
 
